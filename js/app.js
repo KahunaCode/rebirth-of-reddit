@@ -5,6 +5,7 @@ console.log("works");
 function reqListener () {
   //console.log(this.responseText);
   var response = JSON.parse(this.responseText);
+  console.log(response);
   // console.log(response.data.children[0].data);
    console.log(response.data.children[2].data);
   // console.log(response.data.children[3].data.url);
@@ -18,13 +19,31 @@ function reqListener () {
     if (response.data.children[i].kind === "t3"){
       console.log("match",response.data.children[i].kind);
       if (response.data.children[i].data.post_hint === "image"){
-        console.log(response.data.children[i].data.url);
+        //console.log(response.data.children[i].data.url);
         var picpic = document.getElementById(picContainer.pop());
-        console.log("popping ", picpic);
+        //console.log("popping ", picpic);
         picpic.src = response.data.children[i].data.url;
-        console.log("siblingchild ",picpic.nextSibling.nextSibling.childNodes);
+        //console.log("siblingchild ",picpic.nextSibling.nextSibling.childNodes);
         picpic.nextSibling.nextSibling.childNodes[1].innerHTML = response.data.children[i].data.title;
-        picpic.nextSibling.nextSibling.childNodes[3].innerHTML = "the subtitle is great tooo";
+
+        (function(){
+          function commentListener (){
+            var cResponse = JSON.parse(this.responseText);
+            console.log("cResp ", cResponse);
+            console.log(cResponse[1].data.children[0].data.body);
+            picpic.nextSibling.nextSibling.childNodes[3].innerHTML = cResponse[1].data.children[0].data.body;
+
+
+          }
+
+          var cReq = new XMLHttpRequest();
+          cReq.addEventListener("load", commentListener);
+          cReq.open("GET", "https://www.reddit.com/r/EarthPorn/comments/6gf6ou.json");
+          cReq.send();
+
+        })();
+
+        //picpic.nextSibling.nextSibling.childNodes[3].innerHTML = "the subtitle is great tooo";
         picCounter++;
       }
     }

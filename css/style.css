@@ -43,3 +43,12 @@ h4{
   margin: auto;
   width: 40%;
 }
+
+#logo{
+  background-color: white;
+  width: 440px;
+}
+
+#fastenateLogo{
+  padding-left: 20px;
+}

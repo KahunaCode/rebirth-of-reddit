@@ -6,7 +6,7 @@ function reqListener () {
   //console.log(this.responseText);
   var response = JSON.parse(this.responseText);
   // console.log(response.data.children[0].data);
-  // console.log(response.data.children[2].data);
+   console.log(response.data.children[2].data.title);
   // console.log(response.data.children[3].data.url);
   //var pic = document.getElementById("pic1");
   //pic.src = "https://i.redd.it/tl6atbmxjp2z.jpg";
@@ -22,6 +22,9 @@ function reqListener () {
         var picpic = document.getElementById(picContainer.pop());
         console.log("popping ", picpic);
         picpic.src = response.data.children[i].data.url;
+        console.log("siblingchild ",picpic.nextSibling.nextSibling.childNodes);
+        picpic.nextSibling.nextSibling.childNodes[1].innerHTML = "My neato heading";
+        picpic.nextSibling.nextSibling.childNodes[3].innerHTML = "the subtitle is great tooo";
         picCounter++;
       }
     }

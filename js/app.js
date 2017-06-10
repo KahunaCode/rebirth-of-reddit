@@ -7,13 +7,8 @@ function reqListener () {
   var response = JSON.parse(this.responseText);
   console.log(response.data.children.length);
   // console.log(response.data.children[0].data);
-  //console.log(response.data.children[2].data);
+  // console.log(response.data.children[2].data);
   // console.log(response.data.children[3].data.url);
-  //var pic = document.getElementById("pic1");
-  //pic.src = "https://i.redd.it/tl6atbmxjp2z.jpg";
-  //pic.src = response.data.children[3].data.url;
-
-  //var picContainer = ["pic1", "pic2", "pic3", "pic4"];
   var lenPics = response.data.children.length;
 
   var picCounter = 0;
@@ -33,20 +28,15 @@ function reqListener () {
           elementContainer.appendChild(mainPic);
 
           var mainHeading = document.createElement("h2");
-          mainHeading.innerHTML = "Count:"+picCounter+" "+response.data.children[i].data.title;
+          //mainHeading.innerHTML = "Count:"+picCounter+" "+response.data.children[i].data.title;
+          mainHeading.innerHTML = response.data.children[i].data.title;
           picCounter++;
           elementContainer.appendChild(mainHeading);
 
-
-          console.log(elementContainer);
-          //var picpic = document.getElementById(picContainer.pop());
-          //console.log("popping ", picpic);
-          //picpic.src = response.data.children[i].data.url;
-          //console.log("siblingchild ",picpic.nextSibling.nextSibling.childNodes);
-          //picpic.nextSibling.nextSibling.childNodes[1].innerHTML = response.data.children[i].data.title;
+          //console.log(elementContainer);
 
           var cReqId = response.data.children[i].data.id;
-          console.log("cReqId is", cReqId);
+          //console.log("cReqId is", cReqId);
           function commentListener (){
             //console.log("iife ", picCounter);
             var cResponse = JSON.parse(this.responseText);
@@ -54,7 +44,7 @@ function reqListener () {
             //console.log(cResponse[1].data.children[0].data.body);
             var subHeading = document.createElement("h4");
 
-
+            //try catch because sometimes there aren't comments for a subtitle
             var comment = "";
             try {
               comment = cResponse[1].data.children[0].data.body;
@@ -62,17 +52,9 @@ function reqListener () {
               comment = "trendy subheading: firstpost!";
             }
             subHeading.innerHTML = comment;
-
-            // if (comment){
-            //   subHeading.innerHTML = cResponse[1].data.children[0].data.body;
-            // }
-            // else{
-            //   subHeading.innerHTML = "trendy subheading: first post!";
-            // }
             elementContainer.appendChild(subHeading);
 
             //console.log("subheading should be:", cResponse[1].data.children[0].data.body);
-            //picpic.nextSibling.nextSibling.childNodes[3].innerHTML = cResponse[1].data.children[0].data.body;
           }
 
                     overallContainer.appendChild(elementContainer);
@@ -80,13 +62,12 @@ function reqListener () {
           var cReq = new XMLHttpRequest();
           cReq.addEventListener("load", commentListener);
           //cReq.open("GET", "https://www.reddit.com/r/EarthPorn/comments/6gf6ou.json");
-          console.log(`https://www.reddit.com/r/EarthPorn/comments/${cReqId}.json`);
+          //console.log(`https://www.reddit.com/r/EarthPorn/comments/${cReqId}.json`);
           cReq.open("GET", `https://www.reddit.com/r/EarthPorn/comments/${cReqId}.json`);
           cReq.send();
 
         })();
 
-        //picpic.nextSibling.nextSibling.childNodes[3].innerHTML = "the subtitle is great tooo";
       }
     }
   }

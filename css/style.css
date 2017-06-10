@@ -1,5 +1,27 @@
+
+*{
+  color: grey;
+}
+
 body{
-  background-color: #ADD8E6;
+  background-image: url("../assets/bg.jpg");
+}
+
+a:link{
+  text-decoration: none;
+}
+
+h2{
+  width: 392px;
+  padding-left: 8px;
+  color: black;
+
+}
+
+h4{
+  width: 392px;
+  padding-left: 8px;
+  padding-bottom: 8px;
 }
 
 .pics{
@@ -7,3 +29,17 @@ body{
   height: 400px;
 }
 
+.viewContainer{
+  background-color: white;
+  width: 400px;
+  border-style: solid;
+  border-color: white;
+  border-width: 20px 20px 1px 20px;
+  margin-bottom: 10px;
+}
+
+#overallContainer{
+  display: block;
+  margin: auto;
+  width: 40%;
+}

@@ -19,7 +19,12 @@ function reqListener () {
 
         (function(){
           console.log(response.data.children[i].data.id);
+          var aTag = document.createElement("a");
+          aTag.setAttribute("href", response.data.children[i].data.url);
+
           var elementContainer = document.createElement("div");
+
+          console.log(response.data.children[i].data.url);
           elementContainer.className = "viewContainer";
 
           var mainPic = document.createElement("img");
@@ -57,7 +62,8 @@ function reqListener () {
             //console.log("subheading should be:", cResponse[1].data.children[0].data.body);
           }
 
-                    overallContainer.appendChild(elementContainer);
+          aTag.appendChild(elementContainer);
+          overallContainer.appendChild(aTag);
 
           var cReq = new XMLHttpRequest();
           cReq.addEventListener("load", commentListener);

@@ -53,10 +53,25 @@ function reqListener () {
             //console.log("cResp ", cResponse);
             //console.log(cResponse[1].data.children[0].data.body);
             var subHeading = document.createElement("h4");
-            subHeading.innerHTML = "SUBNEAT"+cResponse[1].data.children[0].data.body;
+
+
+            var comment = "";
+            try {
+              comment = cResponse[1].data.children[0].data.body;
+            }catch(err){
+              comment = "trendy subheading: firstpost!";
+            }
+            subHeading.innerHTML = comment;
+
+            // if (comment){
+            //   subHeading.innerHTML = cResponse[1].data.children[0].data.body;
+            // }
+            // else{
+            //   subHeading.innerHTML = "trendy subheading: first post!";
+            // }
             elementContainer.appendChild(subHeading);
 
-            console.log("body should be:", cResponse[1].data.children[0].data.body);
+            //console.log("subheading should be:", cResponse[1].data.children[0].data.body);
             //picpic.nextSibling.nextSibling.childNodes[3].innerHTML = cResponse[1].data.children[0].data.body;
           }
 

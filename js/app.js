@@ -8,15 +8,21 @@ function reqListener () {
   // console.log(response.data.children[0].data);
   // console.log(response.data.children[2].data);
   // console.log(response.data.children[3].data.url);
-  var pic = document.getElementById("pic1");
+  //var pic = document.getElementById("pic1");
   //pic.src = "https://i.redd.it/tl6atbmxjp2z.jpg";
-  pic.src = response.data.children[3].data.url;
+  //pic.src = response.data.children[3].data.url;
 
-  for (var i = 0; i < 4; i++){
+  var picContainer = ["pic1", "pic2", "pic3", "pic4"];
+  var picCounter = 0;
+  for (var i = 0; picCounter < 4; i++){
     if (response.data.children[i].kind === "t3"){
       console.log("match",response.data.children[i].kind);
       if (response.data.children[i].data.post_hint === "image"){
         console.log(response.data.children[i].data.url);
+        var picpic = document.getElementById(picContainer.pop());
+        console.log("popping ", picpic);
+        picpic.src = response.data.children[i].data.url;
+        picCounter++;
       }
     }
   }

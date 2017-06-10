@@ -8,7 +8,9 @@ function reqListener () {
   // console.log(response.data.children[0].data);
   // console.log(response.data.children[2].data);
   // console.log(response.data.children[3].data.url);
-
+  var pic = document.getElementById("pic1");
+  //pic.src = "https://i.redd.it/tl6atbmxjp2z.jpg";
+  pic.src = response.data.children[3].data.url;
 
   for (var i = 0; i < 4; i++){
     if (response.data.children[i].kind === "t3"){

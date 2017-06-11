@@ -1,6 +1,8 @@
 
 *{
   color: grey;
+  font-family: 'Oswald', sans-serif;
+
 }
 
 body{
@@ -41,6 +43,21 @@ h5{
   border-color: white;
   border-width: 20px 20px 1px 20px;
   margin-bottom: 10px;
+}
+
+#buttonDiv{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 440px;
+}
+
+.buttons{
+  width: 33%;
+  background-color: grey;
+  color: black;
+  padding: 10px 0px 10px 0px;
 }
 
 #overallContainer{

@@ -106,7 +106,7 @@ function reqListener () {
           cReq.addEventListener("load", commentListener);
           //cReq.open("GET", "https://www.reddit.com/r/EarthPorn/comments/6gf6ou.json");
           //console.log(`https://www.reddit.com/r/EarthPorn/comments/${cReqId}.json`);
-          cReq.open("GET", `https://www.reddit.com/r/EarthPorn/comments/${cReqId}.json`);
+          cReq.open("GET", `https://www.reddit.com/r/golf/comments/${cReqId}.json`);
           cReq.send();
 
         })();
@@ -118,5 +118,6 @@ function reqListener () {
 
 var oReq = new XMLHttpRequest();
 oReq.addEventListener("load", reqListener);
-oReq.open("GET", "https://www.reddit.com/r/EarthPorn.json");
+// oReq.open("GET", "https://www.reddit.com/r/EarthPorn.json");
+oReq.open("GET", "https://www.reddit.com/r/golf.json");
 oReq.send();

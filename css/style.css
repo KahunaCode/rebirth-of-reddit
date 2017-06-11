@@ -55,8 +55,8 @@ h5{
 
 .buttons{
   width: 33%;
-  background-color: grey;
-  color: black;
+  background-color: #36454F;
+  color: grey;
   padding: 10px 0px 10px 0px;
 }
 
@@ -78,6 +78,10 @@ h5{
 #left{
   width: 32%;
   padding-left: 2%;
+}
+
+#rando{
+  /*padding: 0px, 0px, 0px, 10px;*/
 }
 
 #center{

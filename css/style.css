@@ -24,6 +24,11 @@ h4{
   padding-bottom: 8px;
 }
 
+h5{
+  display: inline-block;
+
+}
+
 .pics{
   width: 400px;
   height: 400px;
@@ -42,6 +47,28 @@ h4{
   display: block;
   margin: auto;
   width: 40%;
+}
+
+#metaData{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 440px;
+
+}
+
+#left{
+  width: 32%;
+  padding-left: 2%;
+}
+
+#center{
+  width: 32%;
+}
+
+#right{
+  width: 32%;
 }
 
 #logo{

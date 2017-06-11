@@ -5,7 +5,7 @@ console.log("works");
 function reqListener () {
   //console.log(this.responseText);
   var response = JSON.parse(this.responseText);
-  console.log(response.data.children.length);
+  console.log(response);
   // console.log(response.data.children[0].data);
   // console.log(response.data.children[2].data);
   // console.log(response.data.children[3].data.url);
@@ -23,7 +23,6 @@ function reqListener () {
           aTag.setAttribute("href", response.data.children[i].data.url);
 
           var elementContainer = document.createElement("div");
-
           console.log(response.data.children[i].data.url);
           elementContainer.className = "viewContainer";
 
@@ -38,7 +37,45 @@ function reqListener () {
           picCounter++;
           elementContainer.appendChild(mainHeading);
 
-          //console.log(elementContainer);
+          //console.log("time:",response.data.children[i].data.created);
+          function convert(j1970){
+            var date = new Date(j1970*1000);
+            var hours = date.getHours();
+            var minutes = '0' + date.getMinutes();
+            var seconds = '0' + date.getSeconds();
+            var formatted = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+            return formatted;
+          }
+
+          //make author, timestamp, and views
+          var metaData = document.createElement("div");
+          metaData.className = "metadata";
+
+          var author = document.createElement("h5");
+          author.id = "left";
+          var username = response.data.children[i].data.author;
+          if (username.length > 13){
+            author.innerHTML = "by dumbLongName";
+          }
+          else{
+            author.innerHTML = "by "+username;
+          }
+          console.log("author:", author);
+          metaData.appendChild(author);
+
+          var timeStamp = document.createElement("h5");
+          timeStamp.id = "center";
+          timeStamp.innerHTML = convert(response.data.children[i].data.created);
+          console.log("timestamp: ", timeStamp);
+          metaData.appendChild(timeStamp);
+
+          var upVotes = document.createElement("h5");
+          upVotes.id = "right";
+          upVotes.innerHTML = response.data.children[i].data.ups + " ups";
+          console.log("ups:", upVotes);
+          metaData.appendChild(upVotes);
+
+          elementContainer.appendChild(metaData);
 
           var cReqId = response.data.children[i].data.id;
           //console.log("cReqId is", cReqId);

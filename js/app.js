@@ -71,7 +71,7 @@ function reqListener () {
 
           var upVotes = document.createElement("h5");
           upVotes.id = "right";
-          upVotes.innerHTML = response.data.children[i].data.ups + " ups";
+          upVotes.innerHTML = response.data.children[i].data.ups + " upvotes";
           console.log("ups:", upVotes);
           metaData.appendChild(upVotes);
 

@@ -16,9 +16,12 @@ sss = ["carporn"];
 var randoButton = document.getElementById("rando");
 console.log("rando is", rando);
 randoButton.addEventListener("click", function(){
+  clearDivs();
+  });
+randoButton.addEventListener("click", function(){
   console.log("go go gadget reqListener");
   getData();
-});
+  });
 //   (function(){
 
     function reqListener() {
@@ -39,6 +42,7 @@ randoButton.addEventListener("click", function(){
             (function(){
               console.log(response.data.children[i].data.id);
               var aTag = document.createElement("a");
+              aTag.className = "anchorTag";
               aTag.setAttribute("href", response.data.children[i].data.url);
 
               var elementContainer = document.createElement("div");
@@ -119,13 +123,13 @@ randoButton.addEventListener("click", function(){
               }
 
               aTag.appendChild(elementContainer);
-              overallContainer.appendChild(aTag);
+              dynamicDivs.appendChild(aTag);
 
               var cReq = new XMLHttpRequest();
               cReq.addEventListener("load", commentListener);
               //cReq.open("GET", "https://www.reddit.com/r/EarthPorn/comments/6gf6ou.json");
               //console.log(`https://www.reddit.com/r/EarthPorn/comments/${cReqId}.json`);
-              cReq.open("GET", `https://www.reddit.com/r/EarthPorn/comments/${cReqId}.json`);
+              cReq.open("GET", `https://www.reddit.com/r/${randomSub}/comments/${cReqId}.json`);
               cReq.send();
 
               })();
@@ -137,16 +141,30 @@ randoButton.addEventListener("click", function(){
 
 
   function getData(){
-    subs = ['carporn', 'surfing', 'golf'];
+    var choices = ['carporn', 'surfing', 'golf', 'EarthPorn'];
     // var rand = myArray[Math.floor(Math.random() * myArray.length)];
-    randomSub = subs[Math.floor(Math.random() * subs.length)];
+    randomSub = choices[Math.floor(Math.random() * choices.length)];
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
     // oReq.open("GET", "https://www.reddit.com/r/EarthPorn.json");
     oReq.open("GET", `https://www.reddit.com/r/${randomSub}.json`);
     oReq.send();
   }
+
+  function clearDivs(){
+    var deleteme = document.getElementsByClassName("anchorTag");
+    console.log("deleteme length", deleteme.length);
+    while (dynamicDivs.firstChild){
+      dynamicDivs.removeChild(dynamicDivs.firstChild);
+    }
+
+
+    // for (var i = 0; i < deleteme.length; i++){
+    //   console.log("deleting:", deleteme[i]);
+    //   overallContainer.removeChild(deleteme[i]);
+    // }
     // })();
+  }
 getData();
 // });
 

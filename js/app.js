@@ -1,18 +1,5 @@
 console.log("works");
 
-//https://www.reddit.com/r/EarthPorn.json
-subreddits = ["https://www.reddit.com/r/surfing.json",
-"https://www.reddit.com/r/golf.json",
-"https://www.reddit.com/r/carporn.json"
-];
-
-sss = ["carporn"];
-
-// document.addEventListener("DOMContentLoaded", function(){
-//   reqListener();
-//   }
-// );
-
 var randoButton = document.getElementById("rando");
 console.log("rando is", rando);
 randoButton.addEventListener("click", function(){
@@ -22,7 +9,6 @@ randoButton.addEventListener("click", function(){
   console.log("go go gadget reqListener");
   getData();
   });
-//   (function(){
 
     function reqListener() {
       //console.log(this.responseText);
@@ -142,7 +128,7 @@ randoButton.addEventListener("click", function(){
 
   function getData(){
     var choices = ['carporn', 'surfing', 'golf', 'EarthPorn'];
-    // var rand = myArray[Math.floor(Math.random() * myArray.length)];
+    //intentional global var randomSub
     randomSub = choices[Math.floor(Math.random() * choices.length)];
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", reqListener);
@@ -159,12 +145,6 @@ randoButton.addEventListener("click", function(){
     }
 
 
-    // for (var i = 0; i < deleteme.length; i++){
-    //   console.log("deleting:", deleteme[i]);
-    //   overallContainer.removeChild(deleteme[i]);
-    // }
-    // })();
   }
 getData();
-// });
 

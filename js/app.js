@@ -61,7 +61,7 @@ randoButton.addEventListener("click", function(){
               metaData.className = "metadata";
 
               var author = document.createElement("h5");
-              author.id = "left";
+              author.className = "metainfo";
               var username = response.data.children[i].data.author;
               if (username.length > 13){
                 author.innerHTML = "by dumbLongName";
@@ -73,13 +73,13 @@ randoButton.addEventListener("click", function(){
               metaData.appendChild(author);
 
               var timeStamp = document.createElement("h5");
-              timeStamp.id = "center";
+              timeStamp.className= "metainfo";
               timeStamp.innerHTML = convert(response.data.children[i].data.created);
               console.log("timestamp: ", timeStamp);
               metaData.appendChild(timeStamp);
 
               var upVotes = document.createElement("h5");
-              upVotes.id = "right";
+              upVotes.className = "metainfo";
               upVotes.innerHTML = response.data.children[i].data.ups + " upvotes";
               console.log("ups:", upVotes);
               metaData.appendChild(upVotes);
